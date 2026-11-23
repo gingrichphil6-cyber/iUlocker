@@ -109,17 +109,24 @@ test('sanitizeImeiInput and sanitizeDeviceIdentifier normalize input per device 
   assert.equal(sanitizeDeviceIdentifier('35-1234-5678-9012-3', 'iphone'), '351234567890123');
 });
 
-test('validateManualDeviceIdentifier enforces 15-digit IMEI for iPhones and 15-digit IMEI or 10–12 char Serial for iPad and Apple Watch', () => {
-  const shortIphone = validateManualDeviceIdentifier('35123456789012', 'iphone');
+test('validateManualDeviceIdentifier enforces 14 or 15-digit IMEI for iPhones and 14–15 digit IMEI or 10–12 char Serial for iPad and Apple Watch', () => {
+  const shortIphone = validateManualDeviceIdentifier('3512345678901', 'iphone');
   assert.equal(shortIphone.valid, false);
-  assert.equal(shortIphone.digitCount, 14);
+  assert.equal(shortIphone.digitCount, 13);
 
-  const validIphone = validateManualDeviceIdentifier('351234567890123', 'iphone');
-  assert.equal(validIphone.valid, true);
-  assert.equal(validIphone.digitCount, 15);
+  const valid14Iphone = validateManualDeviceIdentifier('35123456789012', 'iphone');
+  assert.equal(valid14Iphone.valid, true);
+  assert.equal(valid14Iphone.digitCount, 14);
+
+  const valid15Iphone = validateManualDeviceIdentifier('351234567890123', 'iphone');
+  assert.equal(valid15Iphone.valid, true);
+  assert.equal(valid15Iphone.digitCount, 15);
 
   const validIpadSerial = validateManualDeviceIdentifier('DLXQ91ABC123', 'ipad');
   assert.equal(validIpadSerial.valid, true);
+
+  const validIpad14Imei = validateManualDeviceIdentifier('35123456789012', 'ipad');
+  assert.equal(validIpad14Imei.valid, true);
 
   const validIpadImei = validateManualDeviceIdentifier('351234567890123', 'ipad');
   assert.equal(validIpadImei.valid, true);
@@ -129,6 +136,9 @@ test('validateManualDeviceIdentifier enforces 15-digit IMEI for iPhones and 15-d
 
   const validWatchSerial = validateManualDeviceIdentifier('G99ABC123DEF', 'apple_watch');
   assert.equal(validWatchSerial.valid, true);
+
+  const validWatch14Imei = validateManualDeviceIdentifier('35123456789012', 'apple_watch');
+  assert.equal(validWatch14Imei.valid, true);
 
   const validWatchImei = validateManualDeviceIdentifier('351234567890123', 'apple_watch');
   assert.equal(validWatchImei.valid, true);

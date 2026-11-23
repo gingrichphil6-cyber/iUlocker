@@ -230,7 +230,7 @@ export const ImeiCheckerCard: React.FC<ImeiCheckerCardProps> = ({
               Unlock Your Blocked Phone
             </h2>
             <p className="text-xs sm:text-sm text-[#6E6E73] mt-0.5">
-              Select your Apple device, service needed, and 15-digit IMEI
+              Select your Apple device, service needed, and 14 or 15-digit IMEI
             </p>
           </div>
 
@@ -685,8 +685,8 @@ export const ImeiCheckerCard: React.FC<ImeiCheckerCardProps> = ({
                       className="text-xs font-semibold uppercase tracking-wider text-[#6E6E73]"
                     >
                       {supportsSerial
-                        ? 'Step 3 · Enter 15-Digit IMEI or Serial Number'
-                        : 'Step 3 · Enter 15-Digit IMEI'}
+                        ? 'Step 3 · Enter 14–15 Digit IMEI or Serial Number'
+                        : 'Step 3 · Enter 14 or 15-Digit IMEI'}
                     </label>
 
                     <span
@@ -725,10 +725,10 @@ export const ImeiCheckerCard: React.FC<ImeiCheckerCardProps> = ({
                       onBlur={() => setIsFocused(false)}
                       placeholder={
                         isIpad
-                          ? 'Enter 15-digit IMEI or Wi-Fi iPad Serial Number'
+                          ? 'Enter 14–15 digit IMEI or Wi-Fi iPad Serial Number'
                           : isWatch
-                          ? 'Enter 15-digit IMEI or GPS Watch Serial Number'
-                          : 'Enter your 15-digit IMEI number'
+                          ? 'Enter 14–15 digit IMEI or GPS Watch Serial Number'
+                          : 'Enter your 14 or 15-digit IMEI number'
                       }
                       aria-describedby="imei-supporting-text"
                       className="w-full bg-transparent px-4 py-3.5 pr-12 font-mono text-base sm:text-lg tracking-wider text-[#1D1D1F] placeholder:text-[#6E6E73]/65 placeholder:font-sans placeholder:tracking-normal focus:outline-none tabular-nums"

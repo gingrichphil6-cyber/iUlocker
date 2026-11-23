@@ -51,8 +51,8 @@ export function sanitizeDeviceIdentifier(
 }
 
 /**
- * Validates that an iPhone has a 15-digit IMEI, or an iPad / Apple Watch has either
- * a 15-digit numeric IMEI (Cellular) or a 10–12 char alphanumeric Serial Number (Wi-Fi / GPS).
+ * Validates that an iPhone has a 14 or 15-digit IMEI, or an iPad / Apple Watch has either
+ * a 14 or 15-digit numeric IMEI (Cellular) or a 10–12 char alphanumeric Serial Number (Wi-Fi / GPS).
  */
 export function validateManualDeviceIdentifier(
   identifier: string,
@@ -61,9 +61,9 @@ export function validateManualDeviceIdentifier(
   const cleaned = sanitizeDeviceIdentifier(identifier, category);
 
   if (category === 'apple_watch' || category === 'ipad') {
-    const is15DigitImei = /^\d{15}$/.test(cleaned);
+    const isValidImei = /^\d{14,15}$/.test(cleaned);
     const isAppleSerial = /^[A-Z0-9]{10,12}$/.test(cleaned);
-    if (is15DigitImei || isAppleSerial) {
+    if (isValidImei || isAppleSerial) {
       return {
         valid: true,
         digitCount: cleaned.length,
@@ -76,18 +76,18 @@ export function validateManualDeviceIdentifier(
       digitCount: cleaned.length,
       errorHeading: 'INVALID IMEI OR SERIAL',
       errorMessage:
-        `Enter a valid 15-digit IMEI or 10–12 character ${deviceLabel} Serial Number (Dial *#06# or check Settings > General > About).`,
+        `Enter a valid 14 or 15-digit IMEI or 10–12 character ${deviceLabel} Serial Number (Dial *#06# or check Settings > General > About).`,
     };
   }
 
   const digitsOnly = cleaned.replace(/\D/g, '');
-  if (!/^\d{15}$/.test(digitsOnly)) {
+  if (!/^\d{14,15}$/.test(digitsOnly)) {
     return {
       valid: false,
       digitCount: digitsOnly.length,
       errorHeading: 'INVALID IMEI',
       errorMessage:
-        'Enter a valid 15-digit IMEI number (Dial *#06# or check Settings > General > About).',
+        'Enter a valid 14 or 15-digit IMEI number (Dial *#06# or check Settings > General > About).',
     };
   }
 

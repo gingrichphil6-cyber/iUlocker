@@ -40,7 +40,7 @@ export const HowItWorksSection: React.FC = () => {
     {
       num: '02',
       title: 'Choose Service & IMEI',
-      description: 'Select your unlock service and enter your 15-digit IMEI.',
+      description: 'Select your unlock service and enter your 14 or 15-digit IMEI.',
       illustration: (
         <svg
           viewBox="0 0 120 72"
