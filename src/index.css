@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: -apple-system, BlinkMacSystemFont, "Inter", "SF Pro Display", sans-serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Inter", "SF Pro Text", sans-serif;
+  --font-mono: "SF Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  --color-canvas: #FFFFFF;
+  --color-surface: #F5F5F7;
+  --color-hairline: #D2D2D7;
+  --color-ink: #1D1D1F;
+  --color-muted: #6E6E73;
+  --color-danger: #B3261E;
+}
+
+@layer base {
+  html {
+    background-color: #FFFFFF;
+    color: #1D1D1F;
+    font-family: var(--font-sans);
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-display);
+    letter-spacing: -0.025em;
+  }
+}
+
+@keyframes shakeX {
+  0%, 100% { transform: translateX(0); }
+  15% { transform: translateX(-6px); }
+  30% { transform: translateX(6px); }
+  45% { transform: translateX(-4px); }
+  60% { transform: translateX(4px); }
+  75% { transform: translateX(-2px); }
+  90% { transform: translateX(2px); }
+}
+
+.animate-shake {
+  animation: shakeX 0.4s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+@keyframes rippleExpand {
+  0% {
+    transform: scale(0);
+    opacity: 0.18;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+.animate-ripple {
+  animation: rippleExpand 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-shake,
+  .animate-ripple {
+    animation: none !important;
+  }
+}

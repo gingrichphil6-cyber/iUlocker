@@ -1,0 +1,6 @@
+{
+  "name": "iUnlocker",
+  "description": "Unlock possibilities. Premium IMEI-based phone eligibility and unlock-support platform.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
