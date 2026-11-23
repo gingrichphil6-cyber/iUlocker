@@ -559,6 +559,48 @@ export const ImeiCheckerCard: React.FC<ImeiCheckerCardProps> = ({
               )}
             </div>
 
+            {/* Lock Screen Visual Reference under Select Device */}
+            <div
+              aria-label="Supported lock screen examples"
+              className="grid grid-cols-1 sm:grid-cols-2 gap-3"
+            >
+              <div className="rounded-xl bg-white border border-[#D2D2D7] p-3 flex flex-col gap-2.5">
+                <div className="h-44 sm:h-48 w-full rounded-lg bg-[#F5F5F7] border border-[#D2D2D7]/70 overflow-hidden flex items-center justify-center p-2">
+                  <img
+                    src="/assets/aistudio/images_c5eb2bdc.jfif"
+                    alt="iPhone Locked To Owner activation lock screen"
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+                <div className="px-0.5">
+                  <div className="text-xs font-semibold text-[#1D1D1F]">
+                    iCloud / Activation Lock
+                  </div>
+                  <p className="text-[11px] text-[#6E6E73] mt-0.5">
+                    Device displays &ldquo;Locked To Owner&rdquo;
+                  </p>
+                </div>
+              </div>
+
+              <div className="rounded-xl bg-white border border-[#D2D2D7] p-3 flex flex-col gap-2.5">
+                <div className="h-44 sm:h-48 w-full rounded-lg bg-[#F5F5F7] border border-[#D2D2D7]/70 overflow-hidden flex items-center justify-center p-2">
+                  <img
+                    src="/assets/aistudio/iphone-network-locked_e1c5c0e0.jpg"
+                    alt="SIM Not Supported network lock screen"
+                    className="w-full h-full object-contain rounded"
+                  />
+                </div>
+                <div className="px-0.5">
+                  <div className="text-xs font-semibold text-[#1D1D1F]">
+                    Carrier / Network Lock
+                  </div>
+                  <p className="text-[11px] text-[#6E6E73] mt-0.5">
+                    Device displays &ldquo;SIM Not Supported&rdquo;
+                  </p>
+                </div>
+              </div>
+            </div>
+
             {/* Step 2: Choose Service Needed (Displayed once device is selected) */}
             {selectedDevice && quotes && (
               <div>
